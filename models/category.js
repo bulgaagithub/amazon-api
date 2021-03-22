@@ -35,9 +35,9 @@ const categorySchema = new mongoose.Schema({
 });
 
 categorySchema.pre("save", function (next) {
-  // name convert
-  this.slug = slugify(this.name);
-  console.log(this.slug);
+  this.slug = slugify(this.name); // name convert
+  this.averageRating = Math.floor(Math.random() * 10) + 1;
+  this.averagePrice = Math.floor(Math.random() * 100000) + 3000;
   next();
 });
 

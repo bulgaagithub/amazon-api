@@ -14,5 +14,16 @@
         "description": "Орчин үеийн вэб програмчлалыг эндээс үзээрэй.",
         "createdAt": "2020-11-22T07:55:19.125Z",
         "__v": 0
+    },
+    {
+        "photo": "it.jpg",
+        "_id": "6058a6fbe8587026b44e91c6",
+        "name": "Шинжлэх ухаан",
+        "description": "Сонгодог шинжлэх ухааны номнууд",
+        "createdAt": "2021-03-22T14:17:31.021Z",
+        "slug": "shinzhleh-uhaan",
+        "averageRating": 2,
+        "averagePrice": 79087,
+        "__v": 0
     }
 ]
