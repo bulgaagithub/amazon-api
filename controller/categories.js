@@ -35,7 +35,7 @@ exports.getCategories = asyncHandler(async (req, res, next) => {
 });
 
 exports.getCategory = asyncHandler(async (req, res, next) => {
-  const category = await Category.findById(req.params.id);
+  const category = await Category.findById(req.params.id).populate('books');
   if (!category) {
     throw new MyError(req.params.id + " ID-тэй категори байхгүй.", 400);
   }

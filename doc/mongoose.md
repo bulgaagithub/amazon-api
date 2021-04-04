@@ -16,3 +16,18 @@ queries
 
 --- pagination ---
 {{url}}/api/v1/categories?select=name&page=2&limit=1
+
+
+What is Mongoose Virtuals?
+Mongoose ni mongodb -ees ogogdliig avch ter ogogdluud deer 
+ajillah bolomjiig olgodog mon 
+
+virtuals 
+table -d baighgui data-g nemj ogdog bolomj baina. 
+tataj avchirsan object -d nemj ugnu. 
+called abstract layer
+
+if you want fetch category with books 
+use virtuals create astract field called books 
+
+populate - дүүргэх  

@@ -45,13 +45,23 @@ const bookSchema = new mongoose.Schema({
   available: [String],
   category: {
     type: mongoose.Schema.ObjectId,
-    reference: 'Category',
+    ref: "Category",
     required: true,
   },
   createdAt: {
     type: Date,
     default: Date.now,
   },
+}, 
+{ toJSON: { virtuals: true }, toObject: { virtuals: true } }
+);
+
+bookSchema.virtual("zohiogch").get(function() {
+    let tokens = this.author.split(" ");
+    if(tokens.length === 1) tokens = this.author.split(".");
+    if(tokens.length === 2) return tokens[1];
+
+    return tokens[0];
 });
 
 // new Mongoose model

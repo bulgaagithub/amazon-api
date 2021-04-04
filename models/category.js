@@ -32,6 +32,15 @@ const categorySchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+},
+{ toJSON: { virtuals: true }, toObject: { virtuals: true } }
+);
+
+categorySchema.virtual('books', {
+    ref: 'Book',
+    localField: '_id',
+    foreignField: 'category',
+    justOne: false,
 });
 
 categorySchema.pre("save", function (next) {
@@ -42,7 +51,7 @@ categorySchema.pre("save", function (next) {
 });
 
 // new Mongoose model
-module.exports = mongoose.model("Cateogry", categorySchema); // Category object to read, // mongoose бүх функцуудыг гаргаад өгнө.
+module.exports = mongoose.model("Category", categorySchema); // Category object to read, // mongoose бүх функцуудыг гаргаад өгнө.
 
 // Schema
 // Schema-тэй болж байгаа юм уу үгүй.

@@ -15,6 +15,7 @@ const logger = require('./middleware/logger');
 
 // Router оруулж ирэх 
 const categoriesRoutes = require('./routes/categories')
+const bookRoutes = require('./routes/books')
 
 
 // nodejs ajillah ued process.env uusdeg 
@@ -41,6 +42,7 @@ app.use(express.json());
 app.use(logger);
 app.use(morgan('combined', {stream: accessLogStream}));
 app.use('/api/v1/categories', categoriesRoutes);
+app.use('/api/v1/books', bookRoutes);
 app.use(errorHandler);
 
 const server = app.listen(process.env.PORT, console.log(`express server...${process.env.PORT} дээр аслаа.`.rainbow));
