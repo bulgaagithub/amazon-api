@@ -139,3 +139,8 @@ handle хийх төв бий болгосон.
     Lesson 44.
     Mongoose Virtuals гэж юу вэ? Virtuals, populate ашиглан холбоотой документуудын мэдээллийг татаж үзүүлэх
     -->
+
+<!--
+    Lesson 45.
+    Mongoose PRE middleware ашиглан категорийг устгахад уг категорийн номнуудыг давхар устгах нь, Mongoose REMOVE функцээр устгах
+    -->

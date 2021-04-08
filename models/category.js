@@ -43,11 +43,16 @@ categorySchema.virtual('books', {
     justOne: false,
 });
 
+categorySchema.pre("remove", async function (next) {
+    await this.model('Book').deleteMany({category: this._id});
+    next();
+});
+  
 categorySchema.pre("save", function (next) {
-  this.slug = slugify(this.name); // name convert
-  this.averageRating = Math.floor(Math.random() * 10) + 1;
-  this.averagePrice = Math.floor(Math.random() * 100000) + 3000;
-  next();
+    this.slug = slugify(this.name); // name convert
+    this.averageRating = Math.floor(Math.random() * 10) + 1;
+    this.averagePrice = Math.floor(Math.random() * 100000) + 3000;
+    next();
 });
 
 // new Mongoose model
