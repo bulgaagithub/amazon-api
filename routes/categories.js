@@ -21,8 +21,12 @@ const { getCategories,
 
 // Second Approach 
 // Pass Book route 
-const booksRouter = require("./books");
-router.use('/:categoryId/books', booksRouter);
+// const booksRouter = require("./books");
+// router.use('/:categoryId/books', booksRouter);
+
+// api/v1/categories/:id/books
+const { getCategoryBooks } = require("../controller/books");
+router.route("/:categoryId/books").get(getCategoryBooks);
 
 // /api/v1/categories 
 router.route('/').get(getCategories).post(createCategory);

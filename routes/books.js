@@ -1,14 +1,21 @@
-const express = require('express');
-const router = express.Router({mergeParams: true});
+const express = require("express");
 
-// Router дээр зөвхөн холболтын хэсгүүд байрлана.
-// route - чиглүүлэх 
+const {
+  getBooks,
+  getBook,
+  createBook,
+  deleteBook,
+  updateBook,
+  uploadBookPhoto,
+} = require("../controller/books");
 
-// Import router from controller
+const router = express.Router();
 
-const {getBooks} = require("../controller/books");
-// /api/v1/books
-router.route('/').get(getBooks);
-// router.route('/:id').get(getCategory).put(updateCategory).delete(deleteCategory);
+//"/api/v1/books"
+router.route("/").get(getBooks).post(createBook);
+
+router.route("/:id").get(getBook).delete(deleteBook).put(updateBook);
+
+router.route("/:id/photo").put(uploadBookPhoto);
 
 module.exports = router;
