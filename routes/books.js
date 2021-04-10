@@ -1,4 +1,5 @@
-const express = require("express");
+const express = require('express');
+const { protect, authorize } = require('../middleware/protect');
 
 const {
   getBooks,
@@ -7,15 +8,15 @@ const {
   deleteBook,
   updateBook,
   uploadBookPhoto,
-} = require("../controller/books");
+} = require('../controller/books');
 
 const router = express.Router();
 
-//"/api/v1/books"
-router.route("/").get(getBooks).post(createBook);
+//'/api/v1/books'
+router.route('/').get(getBooks).post(protect, authorize('admin','operator'), createBook);
 
-router.route("/:id").get(getBook).delete(deleteBook).put(updateBook);
+router.route('/:id').get(getBook).delete(protect, authorize('admin'), deleteBook).put(protect, authorize('admin','operator'), updateBook);
 
-router.route("/:id/photo").put(uploadBookPhoto);
+router.route('/:id/photo').put(protect, authorize('admin','operator'), uploadBookPhoto); 
 
 module.exports = router;

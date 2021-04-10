@@ -1,4 +1,5 @@
 const express = require('express')
+const cors = require('cors')
 const dotenv = require('dotenv')
 const path = require('path')
 const colors = require('colors')
@@ -38,6 +39,13 @@ var accessLogStream = rfs.createStream('access.log', {
 
 // Body parser // request -ийн body хэвлэхдээ ашиглах объект 
 // request body -г json болгож өгнө. 
+
+const corsOptions = {
+    origin: 'http://localhost:9000',
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(cors(corsOptions))
 app.use(express.json())
 app.use(fileupload())
 app.use(logger)

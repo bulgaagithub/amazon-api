@@ -43,7 +43,7 @@ UserSchema.pre("save", async function () {
 
 UserSchema.methods.getJWT = function() {
     const token = jwt.sign(
-        { id: this._id, }, 
+        { id: this._id, role: this.role }, 
         process.env.JWT_SECRET, 
         { expiresIn: process.env.JWT_EXPIRESIN } 
     );

@@ -48,6 +48,14 @@ const bookSchema = new mongoose.Schema({
     ref: "Category",
     required: true,
   },
+  createUser: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+  },
+  updateUser: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+  },
   createdAt: {
     type: Date,
     default: Date.now,
