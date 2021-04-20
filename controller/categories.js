@@ -32,6 +32,7 @@ exports.getCategory = asyncHandler(async (req, res, next) => {
   if (!category) {
     throw new MyError(req.params.id + " ID-тэй категори байхгүй.", 400);
   }
+
   res.status(200).json({
     success: true,
     data: category,

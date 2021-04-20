@@ -51,7 +51,7 @@ categorySchema.pre("remove", async function (next) {
 categorySchema.pre("save", function (next) {
     this.slug = slugify(this.name); // name convert
     this.averageRating = Math.floor(Math.random() * 10) + 1;
-    this.averagePrice = Math.floor(Math.random() * 100000) + 3000;
+    // this.averagePrice = Math.floor(Math.random() * 100000) + 3000;
     next();
 });
 

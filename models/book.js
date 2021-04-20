@@ -64,6 +64,31 @@ const bookSchema = new mongoose.Schema({
 { toJSON: { virtuals: true }, toObject: { virtuals: true } }
 );
 
+bookSchema.statics.computeCategoryAveragePrice = async function (catId) {
+    const obj = await this.aggregate([
+        { $match: { category: catId } },
+        { $group: { _id: $category, avgPrice: { $avg: "$price" } } },
+    ])
+
+    let avgPrice = null;
+
+    if ( obj.length > 0 ) avgPrice = obj[0].avgPrice;
+
+    await this.model('Category').findByIdAndUpdate(catId, {
+        averagePrice: avgPrice,
+    });
+
+    return obj;
+}
+
+// bookSchema.post("save").get(function() { // after 
+//     this.constructor.computeCategoryAveragePrice(this.category);
+// });
+
+// bookSchema.pre("remove").get(function() { // pre - урьдчилсан
+//     this.constructor.computeCategoryAveragePrice(this.category);
+// });
+
 bookSchema.virtual("zohiogch").get(function() {
     let tokens = this.author.split(" ");
     if(tokens.length === 1) tokens = this.author.split(".");

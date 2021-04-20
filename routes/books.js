@@ -1,5 +1,6 @@
 const express = require('express');
 const { protect, authorize } = require('../middleware/protect');
+const router = express.Router();
 
 const {
   getBooks,
@@ -10,7 +11,6 @@ const {
   uploadBookPhoto,
 } = require('../controller/books');
 
-const router = express.Router();
 
 //'/api/v1/books'
 router.route('/').get(getBooks).post(protect, authorize('admin','operator'), createBook);

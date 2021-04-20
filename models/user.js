@@ -19,7 +19,7 @@ const UserSchema = new mongoose.Schema({
   role: {
     type: String,
     required: [true, "Хэрэглэгчийн эрхийг оруулна уу"],
-    enum: ["user", "operator"],
+    enum: ["user", "operator", "admin"],
     default: "user",
   },
   password: {

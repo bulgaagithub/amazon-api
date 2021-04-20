@@ -1,23 +1,23 @@
 [
     {
-        "role": "user",
-        "_id": "606f1dff97b3a44610f16f3f",
-        "name": "Tuwshin",
-        "email": "tuwshin@gmail.com",
-        "password": "1234"
-    },
-    {
-        "role": "user",
-        "_id": "60705ae58e075125c5451fd0",
-        "name": "Amaraa",
-        "email": "amaraa@gmail.com",
-        "password": "1234"
-    },
-    {
         "role": "operator",
+        "_id": "606f1dff97b3a44610f16f3f",
+        "name": "Maral",
+        "email": "maral@gmail.com",
+        "password": "1234"
+    },
+    {
+        "role": "admin",
+        "_id": "60705ae58e075125c5451fd0",
+        "name": "Admin",
+        "email": "admin@gmail.com",
+        "password": "1234"
+    },
+    {
+        "role": "user",
         "_id": "60705b118e075125c5451fd1",
-        "name": "Test",
-        "email": "test@gmail.com",
+        "name": "User",
+        "email": "user@gmail.com",
         "password": "1234"
     }
 ]
