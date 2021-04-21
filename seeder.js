@@ -7,7 +7,7 @@ const Category = require("./models/category");
 const Book = require("./models/book");
 const User = require("./models/user");
 
-dotenv.config({ path: "./config/config.env" });
+dotenv.config({ path: "./config.env" });
 
 mongoose.connect(process.env.MONGODB_URI, {
   useNewUrlParser: true,

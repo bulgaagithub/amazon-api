@@ -23,7 +23,7 @@ const usersRoutes = require('./routes/users')
 // nodejs ajillah ued process.env uusdeg 
 // Аппын тохиргоог process.env рүү ачаалах
 dotenv.config({
-    path: './config/config.env'
+    path: './config.env'
 })
 
 const app = express()
