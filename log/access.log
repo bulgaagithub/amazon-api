@@ -281,3 +281,6 @@
 ::1 - - [14/Apr/2021:12:54:50 +0000] "GET /api/v1/users/606f1dff97b3a44610f16f3f HTTP/1.1" 200 164 "-" "PostmanRuntime/7.26.8"
 ::1 - - [14/Apr/2021:12:55:04 +0000] "GET /api/v1/users/606f1dff97b3a44610f16f3f/books HTTP/1.1" 200 10716 "-" "PostmanRuntime/7.26.8"
 ::1 - - [14/Apr/2021:12:55:10 +0000] "POST /api/v1/users/login HTTP/1.1" 200 444 "-" "PostmanRuntime/7.26.8"
+::1 - - [21/Apr/2021:03:47:40 +0000] "GET /api/v1/categories HTTP/1.1" 200 94 "-" "PostmanRuntime/7.26.8"
+::1 - - [21/Apr/2021:03:48:15 +0000] "GET /api/v1/categories HTTP/1.1" 200 1335 "-" "PostmanRuntime/7.26.8"
+::1 - - [21/Apr/2021:03:51:20 +0000] "GET /api/v1/categories HTTP/1.1" 200 94 "-" "PostmanRuntime/7.26.8"
