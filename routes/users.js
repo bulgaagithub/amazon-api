@@ -10,7 +10,8 @@ const {
     createUser, 
     updateUser, 
     deleteUser,
-    forgotPassword
+    forgotPassword,
+    resetPassword
 } = require("../controller/users");
 
 const { protect, authorize } = require("../middleware/protect")
@@ -22,6 +23,8 @@ const router = express.Router();
 router.route("/register").post(register);
 router.route("/login").post(login);
 router.route("/forgot-password").post(forgotPassword);
+router.route("/reset-password").post(resetPassword);
+
 
 router.use(protect)
 
