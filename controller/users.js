@@ -2,6 +2,7 @@ const User = require('../models/user');
 const asyncHandler = require('express-async-handler');
 const MyError = require('../utils/myerror');
 const paginate = require('../utils/paginate');
+const sendEmail = require('../utils/email');
 
 // register
 exports.register = asyncHandler(async (req, res, next) => {
@@ -119,4 +120,43 @@ exports.deleteUser = asyncHandler(async (req, res, next) => {
   } catch (err) {
     next(err);
   }
+});
+
+// forgot password 
+exports.forgotPassword = asyncHandler(async (req, res, next) => {
+
+    if (!req.body.email) {
+        throw new MyError('Та нууц үг сэргээх имэйл хаягаа дамжуулна уу.', 400);
+    }
+
+    const user = await User.findOne({ email: req.body.email });
+
+    if (!user) {
+        throw new MyError(req.body.email + ' имэйлтэй хэрэглэгч олдсонгүй!', 400);
+    }
+  
+    // reset token generate function 
+    const resetToken = user.generatePasswordChangeToken();
+    await user.save();
+    // await user.save({ validateBeforeSave: false });
+    
+    // Имэйл илгээнэ.
+
+    const link = `https://amazon.mn/changepassword/${resetToken}`;
+
+    const message = `Сайн байна уу <br><br> Та нууц үг сэргээх хүсэлт илгээлээ.<br>
+                    Доорх линк дээр дарж нууц үгээ солино уу. <br><br><a target="_blank" href="${link}"></a><br><br> Өдрийг сайхан өнгөрүүлээрэй.`
+
+    const info = await sendEmail({
+        email: user.email,
+        subject: 'Нууц үг өөрчлөх хүсэлт',
+        message: ''
+    })
+
+    console.log("Message sent: %s", info.messageId);
+
+    res.status(200).json({
+        success: true,
+        resetToken
+    });
 });

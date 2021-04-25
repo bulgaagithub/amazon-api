@@ -9,7 +9,9 @@ const {
     getUser, 
     createUser, 
     updateUser, 
-    deleteUser } = require("../controller/users");
+    deleteUser,
+    forgotPassword
+} = require("../controller/users");
 
 const { protect, authorize } = require("../middleware/protect")
 
@@ -19,6 +21,7 @@ const router = express.Router();
 //"/api/v1/users"
 router.route("/register").post(register);
 router.route("/login").post(login);
+router.route("/forgot-password").post(forgotPassword);
 
 router.use(protect)
 
