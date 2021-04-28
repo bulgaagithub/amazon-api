@@ -305,3 +305,5 @@
 ::1 - - [25/Apr/2021:09:57:29 +0000] "POST /api/v1/users/reset-password HTTP/1.1" 200 444 "-" "PostmanRuntime/7.26.8"
 ::1 - - [25/Apr/2021:09:58:32 +0000] "POST /api/v1/users/login HTTP/1.1" 401 124 "-" "PostmanRuntime/7.26.8"
 ::1 - - [25/Apr/2021:09:58:40 +0000] "POST /api/v1/users/login HTTP/1.1" 200 444 "-" "PostmanRuntime/7.26.8"
+::1 - - [26/Apr/2021:13:54:15 +0000] "GET /api/v1/categories/5e90434cd433fa11b078ed8a HTTP/1.1" 200 8935 "-" "PostmanRuntime/7.26.8"
+::1 - - [28/Apr/2021:13:35:45 +0000] "GET /api/v1/categories/5e90434cd433fa11b078ed8a HTTP/1.1" 200 8935 "-" "PostmanRuntime/7.26.8"

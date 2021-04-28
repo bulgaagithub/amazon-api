@@ -28,6 +28,14 @@ exports.getCategories = asyncHandler(async (req, res, next) => {
 });
 
 exports.getCategory = asyncHandler(async (req, res, next) => {
+
+//   req.db.teacher.create({
+//       id: 1,
+//       name: 'Мөнх-Эрдэнэ',
+//       phone: '99024244',
+//       password: '12345678'
+//   });
+
   const category = await Category.findById(req.params.id).populate('books');
   if (!category) {
     throw new MyError(req.params.id + " ID-тэй категори байхгүй.", 400);
