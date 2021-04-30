@@ -10,12 +10,15 @@ const {
     createComment, 
     updateComment,
     deleteComment,
-    getComment
+    getComment,
+    getComments
 } = require("../controller/comments")
 
 
 // /api/v1/comments 
-router.route('/').post(protect, authorize('admin', 'operator', 'user'), createComment);
+router.route('/')
+    .get(getComments)
+    .post(protect, authorize('admin', 'operator', 'user'), createComment);
 
 router.route('/:id')
     .get(getComment)
