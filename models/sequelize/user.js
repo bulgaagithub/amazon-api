@@ -22,6 +22,12 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.CHAR(10),
       allowNull: false
+    },
+    about: {
+        type: DataTypes.VIRTUAL,
+        get() {
+            return `${this.name} - ${this.email} (${this.role})`
+        }
     }
   }, {
     sequelize,

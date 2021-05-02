@@ -50,6 +50,8 @@ exports.getComment = asyncHandler(async (req, res, next) => {
 
   res.status(200).json({
     success: true,
+    user: await comment.getUser(),
+    book: await comment.getBook(),
     data: comment,
   });
 });
@@ -77,7 +79,7 @@ exports.getComments = asyncHandler(async (req, res, next) => {
   if (select) {
     query.attributes = select;
   }
-  
+
   if (sort) {
     query.order = sort
       .split(" ")
@@ -93,5 +95,38 @@ exports.getComments = asyncHandler(async (req, res, next) => {
     success: true,
     data: comments,
     pagination,
+  });
+});
+
+// Lazy loading
+exports.getUserComments = asyncHandler(async (req, res, next) => {
+  let user = await req.db.user.findByPk(req.params.id);
+
+  if (!user) {
+    throw new MyError(req.params.id + " ID-тэй хэрэглэгч олдсонгүй.", 400);
+  }
+
+  let comments = await user.getComments();
+
+  res.status(200).json({
+    success: true,
+    user,
+    comments,
+  });
+});
+
+// Eager loading
+exports.getBookComments = asyncHandler(async (req, res, next) => {
+  let book = await req.db.book.findByPk(req.params.id, {
+    include: req.db.comment,
+  });
+
+  if (!book) {
+    throw new MyError(req.params.id + " ID-тэй ном олдсонгүй.", 400);
+  }
+
+  res.status(200).json({
+    success: true,
+    book,
   });
 });

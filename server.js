@@ -64,8 +64,15 @@ app.use(errorHandler);
 // db.teacher.belongsToMany(db.course, { through: "teacher_course"});
 // db.course.belongsToMany(db.teacher,{ through: "teacher_course"});
 
-db.user.belongsToMany(db.book, { through: "comment"});
-db.book.belongsToMany(db.user, { through: "comment"});
+db.user.belongsToMany(db.book, { through: db.comment });
+db.book.belongsToMany(db.user, { through: db.comment });
+
+db.user.hasMany(db.comment);
+db.comment.belongsTo(db.user);
+
+db.book.hasMany(db.comment);
+db.comment.belongsTo(db.book);
+
 db.category.hasMany(db.book);
 db.book.belongsTo(db.category);
 

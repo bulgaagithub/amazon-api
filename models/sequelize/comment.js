@@ -25,7 +25,16 @@ module.exports = function(sequelize, DataTypes) {
     },
     comment: {
       type: DataTypes.STRING(450),
-      allowNull: false
+      allowNull: false,
+      get() {
+          let comment = this.getDataValue('comment').toLowerCase();
+          return comment.charAt(0).toUpperCase() + comment.slice(1);
+        // return this.getDataValue('comment').toUpperCase()
+      },
+
+      set(value) {
+        this.setDataValue('comment', value.replace('миа', 'тиймэрхүү'));
+      }
     }
   }, {
     sequelize,
