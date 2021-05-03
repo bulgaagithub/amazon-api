@@ -48,8 +48,22 @@ exports.getComment = asyncHandler(async (req, res, next) => {
     throw new MyError(req.params.id + " ID-тэй тайлбар олдсонгүй.", 400);
   }
 
+  //   const [result] = await req.db.sequelize.query("SELECT u.name, c.comment, c.createdAt FROM `user` u left join comment c on u.id = c.userid");
+
+  // Modal хэлбэрээр хүлээж авах
+  const result = await req.db.sequelize.query(
+    "SELECT * from comment",
+    {
+        model: req.db.comment,
+    }
+  );
+
+  result[2].comment = "Гоё ном байна!";
+  result[2].save();
+
   res.status(200).json({
     success: true,
+    result,
     user: await comment.getUser(),
     book: await comment.getBook(),
     data: comment,
