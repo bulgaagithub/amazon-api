@@ -26,6 +26,16 @@ module.exports = function(sequelize, DataTypes) {
     comment: {
       type: DataTypes.STRING(450),
       allowNull: false,
+      validate: {
+        len: {
+            args: [10, 100],
+            msg: 'Хамгийн багадаа 10 тэмдэгт байх ёстой.'
+        },
+        notContains: {
+            args: ['миа'],
+            msg: 'Хориглосон үг байна.'
+        }
+      },
       get() {
           let comment = this.getDataValue('comment').toLowerCase();
           return comment.charAt(0).toUpperCase() + comment.slice(1);

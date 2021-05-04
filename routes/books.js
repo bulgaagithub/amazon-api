@@ -20,7 +20,7 @@ router.route('/').get(getBooks).post(protect, authorize('admin','operator'), cre
 
 router.route('/:id').get(getBook).delete(protect, authorize('admin'), deleteBook).put(protect, authorize('admin','operator'), updateBook);
 
-router.route('/:id/photo').put(protect, authorize('admin','operator'), uploadBookPhoto); 
+router.route('/:id/upload-photo').put(protect, authorize('admin','operator'), uploadBookPhoto); 
 
 router.route('/:id/comments').get(getBookComments);
 

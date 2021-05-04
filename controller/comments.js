@@ -50,7 +50,7 @@ exports.getComment = asyncHandler(async (req, res, next) => {
 
   //   const [result] = await req.db.sequelize.query("SELECT u.name, c.comment, c.createdAt FROM `user` u left join comment c on u.id = c.userid");
 
-  // Modal хэлбэрээр хүлээж авах
+  // Model хэлбэрээр хүлээж авах
   const result = await req.db.sequelize.query(
     "SELECT * from comment",
     {

@@ -223,4 +223,20 @@ handle хийх төв бий болгосон.
 
 86) Шууд raw query ашиглан өгөгдлийн сантайгаа ажиллах боломжууд
 
+87) Sequelize модел дээр өгөгдлийн шалгалтуудыг (validation) гүйцэтгэх, өгөгдлийн бусад төрлүүд
+
+88) REST апи хөгжүүлэлтэнд девелоперуудын дагадаг стандартийн тухай
+
+<!-- 
+    Resource:
+    Multiple things (collection) can be list (books)
+    One thing (document) can be one thing. (Happy Potter Philosophy Stone) 
+
+    Resource name write as noun
+    Right - /customers, books, comments
+    Incorrect - /show_customers, loadOrders
+ -->
+
+89) Amazon номын дэлгүүрийн REACT вэб сайт төслийг эхлүүлэх
+
 90) Cross Origin Resourse Sharing (CORS) гэж юу вэ? Түүнийг сэрвэр дээрээ төрөл бүрийн домэйнүүдэд тохируулж нээж хааж турших
