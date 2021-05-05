@@ -44,12 +44,23 @@ var accessLogStream = rfs.createStream("access.log", {
 // Body parser // request -ийн body хэвлэхдээ ашиглах объект
 // request body -г json болгож өгнө.
 
-const corsOptions = {
-  origin: "http://localhost:9000",
-  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+// const corsOptions = {
+//   origin: "http://localhost:9000",
+//   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
 
-app.use(cors(corsOptions));
+var allowlist = ['http://localhost:9000', 'http://localhost:3000']
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (allowlist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+}
+
+app.use(cors(corsOptionsDelegate));
 app.use(express.json());
 app.use(fileupload());
 app.use(logger);
