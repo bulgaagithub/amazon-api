@@ -37,9 +37,15 @@ exports.login = asyncHandler(async (req, res, next) => {
     throw new MyError("Имэйл болон нууц үгээ зөв оруулна уу.", 401);
   }
 
-  res.status(200).json({
+  const token = user.getJWT();
+
+  const cookieOptions = {
+    expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+  }
+
+  res.status(200).cookie('amazon-token', token, cookieOptions).json({
     success: true,
-    token: user.getJWT(),
+    token,
     user: user,
   });
 });

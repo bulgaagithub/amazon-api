@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require('cookie-parser')
 const dotenv = require("dotenv");
 const path = require("path");
 const colors = require("colors");
@@ -60,6 +61,7 @@ var corsOptionsDelegate = function (req, callback) {
   callback(null, corsOptions) // callback expects two parameters: error and options
 }
 
+app.use(cookieParser());
 app.use(cors(corsOptionsDelegate));
 app.use(express.json());
 app.use(fileupload());

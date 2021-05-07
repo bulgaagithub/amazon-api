@@ -13,6 +13,11 @@ const errorHandler = (err, req, res, next) => {
     //     error.statusCode = 400
     // }
 
+    if(error.message === 'jwt malformed') {
+        error.message = 'Та логин хийж байж энэ үйлдлийг хийх боломжтой!'
+        error.statusCode = 401
+    }
+
     if(error.name === 'JsonWebTokenError' && error.message === 'invalid token') {
         error.message = 'Хүчингүй токен байна!'
         error.statusCode = 400
