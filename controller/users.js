@@ -40,13 +40,25 @@ exports.login = asyncHandler(async (req, res, next) => {
   const token = user.getJWT();
 
   const cookieOptions = {
-    expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
-  }
+    expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000),
+    httpOnly: true,
+  };
 
-  res.status(200).cookie('amazon-token', token, cookieOptions).json({
+  res.status(200).cookie("amazon-token", token, cookieOptions).json({
     success: true,
     token,
     user: user,
+  });
+});
+
+exports.logout = asyncHandler(async (req, res, next) => {
+  const cookieOptions = {
+    expires: new Date(Date.now() - 30 * 24 * 60 * 60 * 1000),
+    httpOnly: true,
+  };
+
+  res.status(200).cookie("amazon-token", '', cookieOptions).json({
+    success: true,
   });
 });
 

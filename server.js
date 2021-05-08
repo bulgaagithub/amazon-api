@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
-const cookieParser = require('cookie-parser')
+const cookieParser = require("cookie-parser");
+const mongoSanitize = require("express-mongo-sanitize");
 const dotenv = require("dotenv");
 const path = require("path");
 const colors = require("colors");
@@ -50,20 +51,24 @@ var accessLogStream = rfs.createStream("access.log", {
 //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 // };
 
-var allowlist = ['http://localhost:9000', 'http://localhost:3000']
-var corsOptionsDelegate = function (req, callback) {
-  var corsOptions;
-  if (allowlist.indexOf(req.header('Origin')) !== -1) {
-    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
-  } else {
-    corsOptions = { origin: false } // disable CORS for this request
-  }
-  callback(null, corsOptions) // callback expects two parameters: error and options
-}
+var allowlist = ["http://localhost:9000", "http://localhost:3000"];
+var corsOptionsDelegate = {
+  origin: function (origin, callback) {
+    if (origin === undefined || allowlist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(null, false);
+    }
+  },
+  allowHeaders: "Authorization, Set-Cookie, Content-Type",
+  methods: "GET, POST, PUT, DELETE",
+  credentials: true,
+};
 
 app.use(cookieParser());
 app.use(cors(corsOptionsDelegate));
 app.use(express.json());
+// app.use(mongoSanitize());
 app.use(fileupload());
 app.use(logger);
 app.use(injectDb(db));
@@ -92,8 +97,9 @@ db.book.belongsTo(db.category);
 db.sequelize
   .sync()
   .then((result) => {
-      console.log('sync hiigdlee');
-  }).catch((err) => console.log(err));
+    console.log("sync hiigdlee");
+  })
+  .catch((err) => console.log(err));
 
 const server = app.listen(
   process.env.PORT,
