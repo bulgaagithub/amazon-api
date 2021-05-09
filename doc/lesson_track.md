@@ -267,3 +267,7 @@ http header pollution (hpp) хамгаалалт
 
 102) Amazon REST API документийн сайтыг postman болон Docgen ашиглан үүсгэх, express сэрвэр дээрээ 
 документийн хуудсаа холбох
+
+103) Amazon REST API төслийн кодыг github дээр байрлуулах
+
+104) DIGITAL OCEAN дээр эрх нээж droplet үүсгээд Putty ашиглан холбогдоцгооё
