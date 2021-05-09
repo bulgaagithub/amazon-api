@@ -624,3 +624,5 @@
 ::1 - - [08/May/2021:13:44:27 +0000] "POST /api/v1/users/login HTTP/1.1" 200 444 "-" "PostmanRuntime/7.26.8"
 ::1 - - [08/May/2021:13:44:42 +0000] "POST /api/v1/users/login HTTP/1.1" 401 124 "-" "PostmanRuntime/7.26.8"
 ::1 - - [08/May/2021:13:45:20 +0000] "POST /api/v1/users/login HTTP/1.1" 401 124 "-" "PostmanRuntime/7.26.8"
+::1 - - [09/May/2021:08:21:54 +0000] "GET /api/v1/books/1/comments HTTP/1.1" 200 622 "-" "PostmanRuntime/7.26.8"
+::1 - - [09/May/2021:08:32:14 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://localhost:8000/" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36"

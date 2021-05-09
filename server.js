@@ -68,6 +68,9 @@ const limiter = rateLimit({
   message: "15 минутанд 3 удаа л хандаж болно! ",
 });
 
+// index.html
+app.use(express.static(path.join(__dirname, "public")));
+
 app.use(limiter);
 // http parameter pollution халдлагын эсрэг books?name=aaa&name=bbb  ---> name="bbb"
 app.use(hpp());
