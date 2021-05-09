@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 const rfs = require("rotating-file-stream");
 const colors = require("colors");
-var morgan = require("morgan");
+const morgan = require("morgan");
 const logger = require("./middleware/logger");
 const fileupload = require("express-fileupload");
 const cors = require("cors");
@@ -13,8 +13,6 @@ const helmet = require("helmet");
 const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
-const morgan = require("morgan");
-const rfs = require("rotating-file-stream");
 
 // Router оруулж ирэх
 const categoriesRoutes = require("./routes/categories");
